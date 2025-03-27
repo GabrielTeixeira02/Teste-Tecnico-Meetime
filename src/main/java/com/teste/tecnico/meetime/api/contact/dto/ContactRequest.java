@@ -7,7 +7,6 @@ import lombok.Data;
 public class ContactRequest {
     @NotEmpty
     private String email;
-
     private String firstname;
     private String lastname;
     private String phone;

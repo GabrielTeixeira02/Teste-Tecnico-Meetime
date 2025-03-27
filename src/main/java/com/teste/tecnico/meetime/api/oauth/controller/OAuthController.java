@@ -1,6 +1,7 @@
 package com.teste.tecnico.meetime.api.oauth.controller;
 
 import com.teste.tecnico.meetime.api.oauth.service.OAuthService;
+import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/oauth")
 @RequiredArgsConstructor
 public class OAuthController {
-    private final OAuthService oAuthService;
+
+    @Resource
+    private OAuthService oAuthService;
 
     @GetMapping("/auth")
     public ResponseEntity<String> getAuthorizationUrl() {

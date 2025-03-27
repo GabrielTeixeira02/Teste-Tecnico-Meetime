@@ -5,6 +5,7 @@ import com.teste.tecnico.meetime.exception.HubSpotApiException;
 import com.teste.tecnico.meetime.exception.OAuthException;
 import com.teste.tecnico.meetime.api.oauth.dto.OAuthTokenResponse;
 import feign.FeignException;
+import jakarta.annotation.Resource;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 @RequiredArgsConstructor
 public class OAuthService {
 
-    @Autowired
+    @Resource
     private final HubSpotAuthClient hubSpotAuthClient;
 
     @Value("${hubspot.client-id}")
