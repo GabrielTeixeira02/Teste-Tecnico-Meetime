@@ -1,5 +1,6 @@
-package com.teste.tecnico.meetime.oauth;
+package com.teste.tecnico.meetime.api.oauth.controller;
 
+import com.teste.tecnico.meetime.api.oauth.service.OAuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

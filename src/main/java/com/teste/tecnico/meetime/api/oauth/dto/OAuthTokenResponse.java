@@ -1,4 +1,4 @@
-package com.teste.tecnico.meetime.oauth;
+package com.teste.tecnico.meetime.api.oauth.dto;
 
 import lombok.Data;
 

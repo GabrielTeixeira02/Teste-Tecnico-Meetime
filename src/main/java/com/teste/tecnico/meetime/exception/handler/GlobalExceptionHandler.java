@@ -1,8 +1,9 @@
-package com.teste.tecnico.meetime.handler;
+package com.teste.tecnico.meetime.exception.handler;
 
 import com.teste.tecnico.meetime.exception.HubSpotApiException;
 import com.teste.tecnico.meetime.exception.OAuthException;
-import com.teste.tecnico.meetime.handler.dto.ErrorResponse;
+import com.teste.tecnico.meetime.exception.RateLimitExceededException;
+import com.teste.tecnico.meetime.exception.handler.dto.ErrorResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -29,6 +30,16 @@ public class GlobalExceptionHandler {
                 HttpStatus.BAD_REQUEST.value()
         );
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(RateLimitExceededException.class)
+    public ResponseEntity<ErrorResponse> handleRateLimitExceeded(RateLimitExceededException ex) {
+        ErrorResponse error = new ErrorResponse(
+                "RATE_LIMIT_EXCEEDED",
+                ex.getMessage(),
+                429
+        );
+        return ResponseEntity.status(429).body(error);
     }
 
 }

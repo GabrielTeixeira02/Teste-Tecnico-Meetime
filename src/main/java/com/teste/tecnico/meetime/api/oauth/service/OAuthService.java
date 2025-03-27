@@ -1,8 +1,9 @@
-package com.teste.tecnico.meetime.oauth;
+package com.teste.tecnico.meetime.api.oauth.service;
 
 import com.teste.tecnico.meetime.client.HubSpotAuthClient;
 import com.teste.tecnico.meetime.exception.HubSpotApiException;
 import com.teste.tecnico.meetime.exception.OAuthException;
+import com.teste.tecnico.meetime.api.oauth.dto.OAuthTokenResponse;
 import feign.FeignException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
