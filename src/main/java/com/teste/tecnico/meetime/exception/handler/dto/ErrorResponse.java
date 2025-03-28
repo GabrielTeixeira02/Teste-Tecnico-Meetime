@@ -1,4 +1,4 @@
-package com.teste.tecnico.meetime.handler.dto;
+package com.teste.tecnico.meetime.exception.handler.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

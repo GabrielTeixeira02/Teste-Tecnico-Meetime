@@ -1,6 +1,6 @@
 package com.teste.tecnico.meetime.client;
 
-import com.teste.tecnico.meetime.oauth.OAuthTokenResponse;
+import com.teste.tecnico.meetime.api.oauth.dto.OAuthTokenResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
