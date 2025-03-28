@@ -1,18 +1,17 @@
 package com.teste.tecnico.meetime.exception.handler;
 
 import com.teste.tecnico.meetime.exception.HubSpotApiException;
+import com.teste.tecnico.meetime.exception.InvalidWebhookException;
 import com.teste.tecnico.meetime.exception.OAuthException;
 import com.teste.tecnico.meetime.exception.RateLimitExceededException;
 import com.teste.tecnico.meetime.exception.handler.dto.ErrorResponse;
 import feign.FeignException;
-import jakarta.annotation.Resource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -61,7 +60,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(FeignException.Forbidden.class)
     public ResponseEntity<ErrorResponse> handleFeignForbiddenException(FeignException ex) {
         ErrorResponse error = new ErrorResponse(
-                "FORBIDDEN",
+                HttpStatus.FORBIDDEN.toString(),
                 ex.getMessage(),
                 ex.status()
         );
@@ -69,6 +68,32 @@ public class GlobalExceptionHandler {
         logger.error(ex.getMessage());
 
         return new ResponseEntity<>(error, HttpStatus.valueOf(ex.status()));
+    }
+
+    @ExceptionHandler(InvalidWebhookException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidWebhookException(InvalidWebhookException ex) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.BAD_REQUEST.toString(),
+                ex.getMessage(),
+                HttpStatus.BAD_REQUEST.value()
+        );
+
+        logger.error(ex.getMessage());
+
+        return new ResponseEntity<>(error, HttpStatus.valueOf(HttpStatus.BAD_REQUEST.value()));
+    }
+
+    @ExceptionHandler(SecurityException.class)
+    public ResponseEntity<ErrorResponse> handleSecurityException(SecurityException ex) {
+        ErrorResponse error = new ErrorResponse(
+                HttpStatus.FORBIDDEN.toString(),
+                ex.getMessage(),
+                HttpStatus.FORBIDDEN.value()
+        );
+
+        logger.error(ex.getMessage());
+
+        return new ResponseEntity<>(error, HttpStatus.valueOf(HttpStatus.FORBIDDEN.value()));
     }
 
 }

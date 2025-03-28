@@ -30,8 +30,4 @@ public class HubSpotWebhookEvent {
 
     @JsonProperty("properties")
     private Map<String, String> properties;
-
-    public ZonedDateTime getOccurredAtDateTime() {
-        return Instant.ofEpochMilli(occurredAt).atZone(ZoneId.systemDefault());
-    }
 }
