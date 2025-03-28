@@ -17,7 +17,7 @@ import java.util.Optional;
 @Slf4j
 public class WebhookService {
 
-    @Value("${hubspot.webhook.secret}")
+    @Value("${hubspot.client-secret}")
     private String webhookSecret;
 
     public void processWebhookEvents(List<HubSpotWebhookEvent> events,
